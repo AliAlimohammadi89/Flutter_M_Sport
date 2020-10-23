@@ -19,10 +19,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
+      debugShowMaterialGrid:false ,
+//      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false,
+//      showSemanticsDebugger: false,
+
       title: 'WhatsApp',
       theme: ThemeData(
           fontFamily: 'vazir',
-
           // This is the theme of your application.
           //
           // Try running your application with "flutter run". You'll see the
@@ -41,21 +45,14 @@ class MyApp extends StatelessWidget {
         '/splash': (context) => new Splash.SplashScreen(),
 //      '/Home': (context) => new Home(),
 //      '/splash': (context) => new Splash.SplashScreen(),
-
         "/Exercise_list" : (context) => new Directionality(textDirection: TextDirection.rtl, child: new Exercise_list()),
-
 //        '/Exercise_list': (context) => new Exercise_list(),
         '/Exercise_program': (context) => new DefaultPlayer(),
         '/Food_list': (context) => new Food_list(),
         '/Food_program': (context) => new Food_program(),
-
-
-
       },
-          initialRoute: '/Exercise_program',
-
-      debugShowCheckedModeBanner: false,
-    );
+          initialRoute: '/splash',
+     );
   }
 }
 

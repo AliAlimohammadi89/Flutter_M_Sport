@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+
+import 'Login.dart';
 //import 'Login.dart' as Login;
 
 class SplashScreen extends StatefulWidget {
@@ -21,13 +23,13 @@ class SplashScreenState extends State {
   }
 
   Future loadData() async {
-    return new Timer(Duration(seconds: 1), onDoneLoading);
+    return new Timer(Duration(seconds: 3), onDoneLoading);
   }
 
   onDoneLoading() async {
     print (333);
-//    Navigator.of(context).push(MaterialPageRoute(builder: (context) => Login.Login()));
-    Navigator.of(context).pushNamed('/Login');
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => Login()));
+//    Navigator.of(context).pushNamed('/Login');
 
   }
 
