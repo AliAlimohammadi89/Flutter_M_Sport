@@ -12,7 +12,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:untitlednew2_6/Widget/Appbar.dart';
+import 'package:untitlednew2_6/Widget/Drawer.dart';
 
+import 'Exercise_program.dart';
 import 'Home.dart';
 
 //void main() => runApp(MyApp());
@@ -30,9 +32,6 @@ class Exercise_list extends StatelessWidget {
   }
 }
 
-final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-final SnackBar snackBar = const SnackBar(content: Text('Showing Snackbar'));
-
 /// This is the stateless widget that the main application instantiates.
 class MyStatelessWidget extends StatelessWidget {
   MyStatelessWidget({Key key}) : super(key: key);
@@ -44,8 +43,8 @@ class MyStatelessWidget extends StatelessWidget {
     return new Directionality(
         textDirection: TextDirection.rtl,
         child: Scaffold(
-            key: scaffoldKey,
-            drawer: Home_Drower(),
+//            key: scaffoldKey,
+            drawer: buildDrawerLayout(context),
             appBar: PreferredSize(
               preferredSize: Size.fromHeight(50.0),
               child: Appbar(),
@@ -59,18 +58,49 @@ class MyStatelessWidget extends StatelessWidget {
 //                SizedBox(height: 12,),
 //                Food_list_W('نهار'),
 
-                SizedBox(
-                  height: 31,
-                ),
-                Food_list_body('شیر کم چرب','دو لیوان'),
-                SizedBox(height: 13, ),
-                Food_list_body('خرwwما','10 عدد'),
-                SizedBox(height: 13, ),
-                Food_list_body('موز','یک عدد'),
-                SizedBox(height: 13, ),
-                Food_list_body('عسل','یک قاشق غذا خوری (میکس)'),
-                SizedBox(height: 13, ),
-                Food_list_body('کیک ساده سیبس  سیب سیب','دو برش متوسط'),
+//                SizedBox(height: 31,),
+                Food_list_body('شنبه','99/7/22'),
+
+                SizedBox(height: 12,),
+                Food_list_body('یک شنبه','99/7/23'),
+
+                SizedBox(height: 12,),
+                Food_list_body('دو شنبه','99/7/24'),
+
+                SizedBox(height: 12,),
+                Food_list_body('سه شنبه','99/7/25'),
+
+                SizedBox(height: 12,),
+                Food_list_body('چهار شنبه','99/7/26'),
+
+                SizedBox(height: 12,),
+                Food_list_body('پنج شنبه','99/7/27'),
+
+                SizedBox(height: 12,),
+                Food_list_body('جمعه','99/7/28'),
+                SizedBox(height: 12,),
+
+               Food_list_body('شنبه','99/7/29'),
+
+                SizedBox(height: 12,),
+                Food_list_body('یک شنبه','99/7/30'),
+
+                SizedBox(height: 12,),
+                Food_list_body('دو شنبه','99/8/1'),
+
+                SizedBox(height: 12,),
+                Food_list_body('سه شنبه','99/8/2'),
+
+                SizedBox(height: 12,),
+                Food_list_body('چهار شنبه','99/8/3'),
+
+                SizedBox(height: 12,),
+                Food_list_body('پنج شنبه','99/8/4'),
+
+                SizedBox(height: 12,),
+                Food_list_body('جمعه','99/8/5'),
+
+
 
               ],
             )));
@@ -78,47 +108,60 @@ class MyStatelessWidget extends StatelessWidget {
 }
 class Food_list_body extends StatelessWidget {
   final String name;
-  final String value;
-  Food_list_body(this.name,this.value);
+  final String date;
+  Food_list_body(this.name,this.date);
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    return
-      Container(
-        height: 50,
-        margin: EdgeInsets.only(right: 10,left: 10),
-        padding: EdgeInsets.only(left: 12,right: 12),
-        decoration: BoxDecoration(
+    return GestureDetector  (
+        onTap: (){
+      print (3);
+
+//      Navigator.of(context).pushNamed('/Exercise_program');
+      Navigator.push(context, new MaterialPageRoute(builder: (context) => new DefaultPlayer()));
+
+
+        },
+    child: Container(
+      height: 50,
+      margin: EdgeInsets.only(right: 10,left: 10),
+      padding: EdgeInsets.only(left: 12,right: 12),
+      decoration: BoxDecoration(
 //          color: Colors.red,
-          gradient: LinearGradient(
-            begin: Alignment.bottomLeft,
-            end: Alignment.topRight,
-            colors: <Color>[
+        gradient: LinearGradient(
+          begin: Alignment.bottomLeft,
+          end: Alignment.topRight,
+          colors: <Color>[
 //              Colors.black.withAlpha(0),
-              Color(0xffFD8D00),
-              Color(0xff57E9E4)
-            ],
-          ),
-//                                borderRadius: BorderRadius.all(Radius.circular(8.0)),
-          borderRadius: BorderRadius.only(
-              topRight: Radius.circular(8.0),
-              bottomLeft:  Radius.circular(8.0),
-              bottomRight:  Radius.circular(8.0),
-
-              topLeft: Radius.circular(10.0)),
-
-//          border: Border.all(width: 0, color: Color(0xff707070)),
-        ),
-        child:        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-
-            Text('جلسه اول',style: TextStyle(fontSize: 20,color: Colors.white),),
-            Text('99/7/19',style: TextStyle(fontSize: 20,fontFamily: 'vazirnu',color: Colors.white),),
-
+            Color(0xffFD8D00),
+//              Color(0xff57E9E4)
+            Color(0xff07E9E4)
           ],
         ),
-      );
+//                                borderRadius: BorderRadius.all(Radius.circular(8.0)),
+        borderRadius: BorderRadius.only(
+            topRight: Radius.circular(8.0),
+            bottomLeft:  Radius.circular(8.0),
+            bottomRight:  Radius.circular(8.0),
+
+            topLeft: Radius.circular(10.0)),
+
+//          border: Border.all(width: 0, color: Color(0xff707070)),
+      ),
+      //
+      child:   Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+
+          Text(this.name,style: TextStyle(fontSize: 20,color: Colors.white),),
+          Text(this.date,style: TextStyle(fontSize: 20,fontFamily: 'vazirnu',color: Colors.white),),
+
+        ],
+      ),
+
+    )
+    );
+
   }
 }
 

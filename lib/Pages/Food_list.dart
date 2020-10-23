@@ -11,7 +11,9 @@ import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:untitlednew2_6/Pages/Food_program.dart';
 import 'package:untitlednew2_6/Widget/Appbar.dart';
+import 'package:untitlednew2_6/Widget/Drawer.dart';
 
 import 'Home.dart';
 
@@ -30,8 +32,8 @@ class Food_list extends StatelessWidget {
   }
 }
 
-final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-final SnackBar snackBar = const SnackBar(content: Text('Showing Snackbar'));
+//final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+//final SnackBar snackBar = const SnackBar(content: Text('Showing Snackbar'));
 
 
 /// This is the stateless widget that the main application instantiates.
@@ -43,8 +45,8 @@ class MyStatelessWidget extends StatelessWidget {
     return new Directionality(
         textDirection: TextDirection.rtl,
         child: Scaffold(
-            key: scaffoldKey,
-            drawer: Home_Drower(),
+//            key: scaffoldKey,
+            drawer: buildDrawerLayout(context),
             appBar: PreferredSize(
               preferredSize: Size.fromHeight(50.0),
               child: Appbar(),
@@ -85,66 +87,89 @@ class Food_list_W extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        Stack(
 
-          alignment: Alignment.center,
+        GestureDetector(
+        onTap: (){
+//          print('ok');
+          Navigator.push(context, new MaterialPageRoute(builder: (context) => new Food_program()));
+
+        },
+          child : Stack(
+            alignment: Alignment.center,
 //                              overflow: Overflow.clip,
-          children: <Widget>[
-            Container(
+            children: <Widget>[
+              Container(
 //                              padding: const EdgeInsets.symmetric(horizontal:1, vertical: 1),
-              width: 343.0,
-              height: 91.0,
+                width: 343.0,
+                height: 91.0,
 
 
-              decoration: BoxDecoration(
+                decoration: BoxDecoration(
 
 //                                borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                borderRadius: BorderRadius.only(bottomRight: Radius.circular(8.0), topLeft : Radius.circular (10.0)),
-                border: Border.all(width: 1),
-              ),
-              child:  Image.asset(
+                  borderRadius: BorderRadius.only(bottomRight: Radius.circular(8.0), topLeft : Radius.circular (10.0)),
+                  border: Border.all(width: 1),
+                ),
+                child:  Image.asset(
 
-                './img/food_p.jpg',
-                fit: BoxFit.cover,
-                alignment: Alignment.center,
-              ),
-            ),
-            Container(
-              width: 343.0,
-              height: 91.0,
-              decoration: BoxDecoration(
-//                                borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                borderRadius: BorderRadius.only(bottomRight: Radius.circular(8.0), topLeft : Radius.circular (10.0)),
-                border: Border.all(width: 1,color:Color(0xff707070)),
-              ),
-
-            ),
-            Container(
-//              padding: EdgeInsets.all(8.0),
-              padding: EdgeInsets.fromLTRB(40, 10 , 40, 10),
-
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-
-                borderRadius: BorderRadius.circular(30),
-                gradient: LinearGradient(
-                  begin: Alignment.center,
-                  end: Alignment.center,
-                  colors: <Color>[
-                    Colors.black.withAlpha(0),
-                    Colors.white,
-                    Colors.white70
-                  ],
+                  './img/food_p.jpg',
+                  fit: BoxFit.cover,
+                  alignment: Alignment.center,
                 ),
               ),
-              child: Text(
-               title,
-                style: TextStyle(
-                    color: Colors.black, fontSize: 18.0),
-              ),
-            ),
-          ],
+              Container(
+                width: 343.0,
+                height: 91.0,
+                decoration: BoxDecoration(
+//                                borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                  borderRadius: BorderRadius.only(bottomRight: Radius.circular(8.0), topLeft : Radius.circular (10.0)),
+                  border: Border.all(width: 1,color:Color(0xff707070)),
+                ),
 
+              ),
+              Container(
+//              padding: EdgeInsets.all(8.0),
+//              padding: EdgeInsets.fromLTRB(40, 10 , 40, 10),
+
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+
+                  borderRadius: BorderRadius.circular(30),
+                  gradient: LinearGradient(
+                    begin: Alignment.center,
+                    end: Alignment.center,
+                    colors: <Color>[
+                      Colors.black.withAlpha(0),
+                      Colors.white,
+                      Colors.white70
+                    ],
+                  ),
+                ),
+                child:SizedBox(
+                    width: 180,
+                    height: 50,
+                    child:  Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+
+                      children: [
+                        Text(
+                          title,
+                          style: TextStyle(
+                              color: Colors.black, fontSize: 18.0),textAlign: TextAlign.center,
+                        ),
+
+                      ],
+                    )
+
+
+                ),
+              ),
+            ],
+
+
+
+          ),
 
 
         ),

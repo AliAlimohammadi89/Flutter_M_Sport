@@ -12,6 +12,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:untitlednew2_6/Widget/Appbar.dart';
+import 'package:untitlednew2_6/Widget/Drawer.dart';
 
 import 'Home.dart';
 
@@ -45,7 +46,7 @@ class MyStatelessWidget extends StatelessWidget {
         textDirection: TextDirection.rtl,
         child: Scaffold(
             key: scaffoldKey,
-            drawer: Home_Drower(),
+            drawer: buildDrawerLayout(context),
             appBar: PreferredSize(
               preferredSize: Size.fromHeight(50.0),
               child: Appbar(),
@@ -85,6 +86,7 @@ class Food_list_pic extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 //    double width = MediaQuery.of(context).size.width;
+    double width = MediaQuery. of(context). size. width;
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -96,7 +98,7 @@ class Food_list_pic extends StatelessWidget {
           children: <Widget>[
             Container(
 //                              padding: const EdgeInsets.symmetric(horizontal:1, vertical: 1),
-              width: 343.0,
+              width: width - 4,
               height: 175.0,
               decoration: BoxDecoration(
 //                                borderRadius: BorderRadius.all(Radius.circular(8.0)),
@@ -112,7 +114,7 @@ class Food_list_pic extends StatelessWidget {
               ),
             ),
             Container(
-              width: 343.0,
+              width: width - 2,
               height: 175.0,
               decoration: BoxDecoration(
 //                                borderRadius: BorderRadius.all(Radius.circular(8.0)),
@@ -124,7 +126,7 @@ class Food_list_pic extends StatelessWidget {
             ),
             Container(
 //              padding: EdgeInsets.all(8.0),
-              padding: EdgeInsets.fromLTRB(40, 10, 40, 10),
+//              padding: EdgeInsets.fromLTRB(40, 10, 40, 10),
 
               alignment: Alignment.center,
               decoration: BoxDecoration(
@@ -139,10 +141,33 @@ class Food_list_pic extends StatelessWidget {
                   ],
                 ),
               ),
-              child: Text(
-                title,
-                style: TextStyle(color: Colors.black, fontSize: 18.0),
+
+              child:SizedBox(
+
+                  width: 200,
+                  height: 50,
+                  child:  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+
+                    children: [
+                      Text(
+                        title,
+                        style: TextStyle(
+                            color: Colors.black, fontSize: 18.0),textAlign: TextAlign.center,
+                      ),
+
+                    ],
+                  )
+
+
               ),
+
+
+//              child: Text(
+//                title,
+//                style: TextStyle(color: Colors.black, fontSize: 18.0),
+//              ),
             ),
           ],
         ),

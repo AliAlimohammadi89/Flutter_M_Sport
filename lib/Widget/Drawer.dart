@@ -11,56 +11,98 @@ import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-
-
-class InkWellDrawer extends StatelessWidget {
-  @override
-  Widget build (BuildContext ctxt) {
-    return new Drawer(
-      child: ListView(
-        children: <Widget>[
-          DrawerHeader(
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(colors: <Color>[
-                    Colors.deepOrangeAccent,
-                    Colors.orange
-                  ])
-              ),
-              child: Container(
-                child: Column(
-                  children: <Widget>[
-                    Material(
-                      borderRadius: BorderRadius.all(Radius.circular(30.0)),
-                      elevation: 10,
-                      color: Colors.transparent,
-                      child: Padding(padding: EdgeInsets.all(0.0),
-                        child: Image.asset("img/Splash2.jpeg", height: 90, width: 90),
-                      ),
+import 'package:untitlednew2_6/Pages/Exercise_list.dart';
+import 'package:untitlednew2_6/Pages/Food_list.dart';
+import 'package:untitlednew2_6/Pages/Home.dart';
+import 'package:untitlednew2_6/Pages/Login.dart';
+import 'package:untitlednew2_6/Pages/Profile.dart';
+Drawer buildDrawerLayout ( BuildContext context){
+  return new Drawer(
+    child: ListView(
+      children: <Widget>[
+        DrawerHeader(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(colors: <Color>[
+                  Colors.deepOrangeAccent,
+                  Colors.orange
+                ])
+            ),
+            child: Container(
+              child: Column(
+                children: <Widget>[
+                  Material(
+                    borderRadius: BorderRadius.all(Radius.circular(30.0)),
+//                      elevation: 10,
+                    color: Colors.transparent,
+                    child: Padding(padding: EdgeInsets.all(0.0),
+                      child: Image.asset("img/Splash2.jpeg", height: 90, width: 90),
                     ),
-                    Text('Flutter', style: TextStyle(color: Colors.white, fontSize: 25.0,fontFamily: 'vazir'),)
-                  ],
-                ),
-              )),
-          CustomListTile(Icons.person, 'Profile', ()=>{
-            Navigator.pop(ctxt),
+                  ),
+//                    Text('MESport', style: TextStyle(color: Colors.white, fontSize: 25.0,fontFamily: 'vazir'),)
+                ],
+              ),
+            )),
+        CustomListTile(Icons.home, 'صفحه اصلی', (){
+//            Navigator.of(context).pop(1'/Login'),
+//          Navigator.pushNamed(context, '/Login')
+//         Navigator.push(context, new MaterialPageRoute(builder: (context) => new Home()));
+//         Navigator.pushReplacementNamed(context, "/Home")
+//            Navigator.of(context).pushNamed('/Home'),
+//          print('a'),
+//                        Navigator.of(context).pushNamed('/Home'),
+//          Navigator.of(context).pushNamed('/Home')
 //            Navigator.push(ctxt,
 ////                new MaterialPageRoute(builder: (ctxt) => new HomeView())
 //            )
-          }),
-          CustomListTile(Icons.notifications, 'Notification', ()=>{
-            Navigator.pop(ctxt),
-//            Navigator.push(ctxt,
-//                new MaterialPageRoute(builder: (ctxt) => new NotificationView())
-//            )
-          }),
-          CustomListTile(Icons.settings, 'Settings', ()=>{}),
-          CustomListTile(Icons.lock, 'Log Out', ()=>{}),
-        ],
+//          Navigator.pop(context);
+//                    Navigator.of(context).pushNamed('/Home');
+                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new Home()));
 
-      ),
-    );
-  }
+//                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new Home()));
+//          try{
+//          Navigator.pushReplacementNamed(context, "/Home");
+//        }
+//        catch(e){
+//          Navigator.push(context, new MaterialPageRoute(builder: (context) => new Home()));
+//        }
+        }),
+        CustomListTile(Icons.accessibility_new_outlined, 'برنامه ورزشی', (){
+//                    Navigator.of(context).pushNamed('/Exercise_list');
+                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new Exercise_list()));
+
+//
+        }),
+
+        CustomListTile(Icons.food_bank_outlined, 'برنامه غدایی', (){
+//                    Navigator.of(context).pushNamed('/Food_list');
+                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new Food_list()));
+
+//
+        }),
+        CustomListTile(Icons.person, 'اطلاعات من', (){
+//                    Navigator.of(context).pushNamed('/');
+//          Navigator.push(context, new MaterialPageRoute(builder: (context) => new LoginSevenPage()));
+
+
+          print('درحال ساخت');
+//
+        }),
+        CustomListTile(Icons.exit_to_app, 'خروج', (){
+//                    Navigator.of(context).pushNamed('/');
+          Navigator.push(context, new MaterialPageRoute(builder: (context) => new Login()));
+
+
+          print('درحال ساخت');
+//
+        }),
+
+      ],
+
+    ),
+  );
 }
+
+
 
 
 

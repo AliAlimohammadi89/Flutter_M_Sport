@@ -8,16 +8,14 @@ import 'dart:convert';
 
 import 'package:untitlednew2_6/Pages/Home.dart';
 
-import 'Forgetpass.dart';
-
 //import 'package:untitlednew2_6/Pages/Home.dart';
 
-class Login extends StatefulWidget {
+class Forgetpass extends StatefulWidget {
   @override
-  _LoginState createState() => _LoginState();
+  _ForgetpassState createState() => _ForgetpassState();
 }
 
-class _LoginState extends State<Login> {
+class _ForgetpassState extends State<Forgetpass> {
   @override
   Widget build(BuildContext context) {
         return Scaffold(
@@ -99,8 +97,8 @@ class _LoginState extends State<Login> {
                         ],
                       ),
 //                      SizedBox(height: 30),
-                      MyInput('کد ملی'),
-                      MyInput2('رمز ورود'),
+                      MyInput('شماره همراه '),
+
                       SizedBox(height: 20),
 //                      LButton(),
 
@@ -117,7 +115,7 @@ class _LoginState extends State<Login> {
 
 
                               child: Text(
-                                "ورد به برنامه",
+                                "دریافت رمز ورد جدید",
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.w700,
@@ -125,23 +123,29 @@ class _LoginState extends State<Login> {
                                ),textDirection: TextDirection.rtl,
                               ),
                               onPressed: () {
+//                                Navigator.pop(context);
+                                print(1);
+                                _handleClickMe();
 
-                                Navigator.push(context, new MaterialPageRoute(builder: (context) => new Home()));
+//                                Navigator.push(context, new MaterialPageRoute(builder: (context) => new ()));
 
 
                               },
                             ),
                           )),
                       SizedBox(height: 10,),
-                      GestureDetector (
-                        onTap: (){
-                          Navigator.push(context, new MaterialPageRoute(builder: (context) => new Forgetpass()));
-                        },
-                        child:Center(
-                          child: Text("رمز ورود خود را فرامشو کردید؟", style: TextStyle(color:Colors.red,fontSize: 14, decoration: TextDecoration.underline  ,fontWeight: FontWeight.w700),textDirection: TextDirection.rtl),
-                        ),
+                  GestureDetector (
+                    onTap: (){
+                      Navigator.pop(context);
 
-                      ),
+//                      /Navigator.push(context, new MaterialPageRoute(builder: (context) => new Forgetpass()));
+                    },
+                      child:Center(
+                         child: Text("برگشت به صفحه ورود", style: TextStyle(color:Colors.red,fontSize: 14, decoration: TextDecoration.underline  ,fontWeight: FontWeight.w700),textDirection: TextDirection.rtl),
+                      ) ,
+                  ),
+
+
 
                       SizedBox(height: 10,),
 
@@ -164,7 +168,38 @@ class _LoginState extends State<Login> {
 
 
   }
+
+  Future<void> _handleClickMe() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return CupertinoAlertDialog(
+          title: Text('رمز ورد به تلفن همراه شما ارسال شد'),
+          content: Text('پس از دریافت رمز در قسمت رمز ورد آن را وارد کنید '),
+          actions: <Widget>[
+            CupertinoDialogAction(
+              child: Text('متوجه شدم'),
+              onPressed: () {
+                Navigator.pushNamed(context, '/Login');
+              },
+            ),
+//            CupertinoDialogAction(
+//              child: Text('Allow'),
+//              onPressed: () {
+//                Navigator.of(context).pop();
+//              },
+//            ),
+          ],
+        );
+      },
+    );
+  }
+
 }
+
+
+
 
 class MyInput extends StatelessWidget {
   final String hint;
@@ -201,7 +236,7 @@ class MyInput extends StatelessWidget {
 
             style: TextStyle(fontSize: 18.0, color: Color(0xFF456173)),
             decoration: new InputDecoration(
-                icon: Icon(Icons.person),
+                icon: Icon(Icons.phone_iphone),
                 fillColor: Colors.transparent,
                 filled: true,
                 hintText: '3040000000',
@@ -276,54 +311,6 @@ class MyInput2 extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-class LButton extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      //  height: 90,
-      padding: EdgeInsets.only(right: 40, left: 40, bottom: 15),
-      width: double.infinity,
-      child: RaisedButton(
-        elevation: 5.0,
-        onPressed: () {
-          print('ok');
-//          Navigator.pop(context);
-
-          print(Navigator);
-
-          try{
-//           Navigator.push(context, new MaterialPageRoute(builder: (context) => new Home()));
-          }
-          catch(e){
-                      Navigator.pushReplacementNamed(context, "/Home");
-
-          }
-//          Navigator.pushReplacementNamed(context, "/Home");
-//          Navigator.pushNamed(context, '/');
-        },
-        padding: EdgeInsets.all(15.0),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8.0),
-        ),
-//                            color: Colors.white70,
-        color: Color(0xff1AA1FF),
-        child: Text(
-          'ورود',
-          style: TextStyle(
-            color: Color(0xff4A4949),
-            letterSpacing: 1.5,
-            fontSize: 18.0,
-            fontWeight: FontWeight.bold,
-            fontFamily: 'vazir',
-          ),
-        ),
-      ),
-    );
-
-
   }
 }
 
