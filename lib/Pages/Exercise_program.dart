@@ -204,7 +204,7 @@ class MyStatelessWidgetVedeo extends StatelessWidget {
 ,
 
 //            key: scaffoldKey,
-            drawer: buildDrawerLayout(context),
+            drawer: Drower(),
             appBar: PreferredSize(
               preferredSize: Size.fromHeight(50.0),
               child: Appbar(),

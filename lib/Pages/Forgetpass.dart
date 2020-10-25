@@ -174,7 +174,8 @@ class _ForgetpassState extends State<Forgetpass> {
       context: context,
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
-        return CupertinoAlertDialog(
+        return
+          CupertinoAlertDialog(
           title: Text('رمز ورد به تلفن همراه شما ارسال شد'),
           content: Text('پس از دریافت رمز در قسمت رمز ورد آن را وارد کنید '),
           actions: <Widget>[

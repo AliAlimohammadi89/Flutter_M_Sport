@@ -11,38 +11,54 @@ import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:untitlednew2_6/Pages/Exercise_list.dart';
 import 'package:untitlednew2_6/Pages/Food_list.dart';
 import 'package:untitlednew2_6/Pages/Home.dart';
 import 'package:untitlednew2_6/Pages/Login.dart';
 import 'package:untitlednew2_6/Pages/Profile.dart';
-Drawer buildDrawerLayout ( BuildContext context){
-  return new Drawer(
-    child: ListView(
-      children: <Widget>[
-        DrawerHeader(
-            decoration: BoxDecoration(
-                gradient: LinearGradient(colors: <Color>[
-                  Colors.deepOrangeAccent,
-                  Colors.orange
-                ])
-            ),
-            child: Container(
-              child: Column(
-                children: <Widget>[
-                  Material(
-                    borderRadius: BorderRadius.all(Radius.circular(30.0)),
-//                      elevation: 10,
-                    color: Colors.transparent,
-                    child: Padding(padding: EdgeInsets.all(0.0),
-                      child: Image.asset("img/Splash2.jpeg", height: 90, width: 90),
-                    ),
-                  ),
-//                    Text('MESport', style: TextStyle(color: Colors.white, fontSize: 25.0,fontFamily: 'vazir'),)
-                ],
+
+class Drower extends StatefulWidget {
+  @override
+  _DrowerState createState() => _DrowerState();
+}
+
+
+class _DrowerState extends State<Drower> {
+
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  navigationToHome() {
+    Navigator.of(context).pushReplacementNamed('/Home');
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        children: <Widget>[
+          DrawerHeader(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(colors: <Color>[
+                    Colors.deepOrangeAccent,
+                    Colors.orange
+                  ])
               ),
-            )),
-        CustomListTile(Icons.home, 'صفحه اصلی', (){
+              child: Container(
+                child: Column(
+                  children: <Widget>[
+                    Material(
+                      borderRadius: BorderRadius.all(Radius.circular(30.0)),
+//                      elevation: 10,
+                      color: Colors.transparent,
+                      child: Padding(padding: EdgeInsets.all(0.0),
+                        child: Image.asset("img/Splash2.jpeg", height: 90, width: 90),
+                      ),
+                    ),
+//                    Text('MESport', style: TextStyle(color: Colors.white, fontSize: 25.0,fontFamily: 'vazir'),)
+                  ],
+                ),
+              )),
+          CustomListTile(Icons.home, 'صفحه اصلی', (){
 //            Navigator.of(context).pop(1'/Login'),
 //          Navigator.pushNamed(context, '/Login')
 //         Navigator.push(context, new MaterialPageRoute(builder: (context) => new Home()));
@@ -56,7 +72,10 @@ Drawer buildDrawerLayout ( BuildContext context){
 //            )
 //          Navigator.pop(context);
 //                    Navigator.of(context).pushNamed('/Home');
-                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new Home()));
+            Navigator.push(context, new MaterialPageRoute(builder: (context) => new Home()));
+//                      Navigator.pushNamed(context, '/Home');
+//                      Navigator.pushNamed(context, '/Home');
+//            navigationToHome();
 
 //                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new Home()));
 //          try{
@@ -65,42 +84,50 @@ Drawer buildDrawerLayout ( BuildContext context){
 //        catch(e){
 //          Navigator.push(context, new MaterialPageRoute(builder: (context) => new Home()));
 //        }
-        }),
-        CustomListTile(Icons.accessibility_new_outlined, 'برنامه ورزشی', (){
+          }),
+          CustomListTile(Icons.accessibility_new_outlined, 'برنامه ورزشی', (){
 //                    Navigator.of(context).pushNamed('/Exercise_list');
-                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new Exercise_list()));
+            Navigator.pushReplacement(context, new MaterialPageRoute(builder: (context) => new Exercise_list()));
 
 //
-        }),
-
-        CustomListTile(Icons.food_bank_outlined, 'برنامه غدایی', (){
+          }),
+          CustomListTile(Icons.food_bank_outlined, 'برنامه غدایی', (){
 //                    Navigator.of(context).pushNamed('/Food_list');
-                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new Food_list()));
+            Navigator.push(context, new MaterialPageRoute(builder: (context) => new Food_list()));
 
 //
-        }),
-        CustomListTile(Icons.person, 'اطلاعات من', (){
+          }),
+          CustomListTile(Icons.person, 'اطلاعات من', (){
 //                    Navigator.of(context).pushNamed('/');
-//          Navigator.push(context, new MaterialPageRoute(builder: (context) => new LoginSevenPage()));
+            Navigator.push(context, new MaterialPageRoute(builder: (context) => new Profile()));
 
 
-          print('درحال ساخت');
+            print('درحال ساخت');
 //
-        }),
-        CustomListTile(Icons.exit_to_app, 'خروج', (){
+          }),
+          CustomListTile(Icons.exit_to_app, 'خروج', () async {
+
+            SharedPreferences prefs = await SharedPreferences.getInstance();
+//          await prefs.setString('user.api_token', userData['api_token']);
+            await prefs.remove('user.api_token');
+
 //                    Navigator.of(context).pushNamed('/');
-          Navigator.push(context, new MaterialPageRoute(builder: (context) => new Login()));
+            Navigator.pushReplacement(context, new MaterialPageRoute(builder: (context) => new Login()));
+//            Navigator.pushReplacementNamed(context, '/splash');
 
 
-          print('درحال ساخت');
+//            print('درحال ساخت');
 //
-        }),
+          }),
 
-      ],
+        ],
 
-    ),
-  );
+      ),
+    );
+  }
 }
+
+
 
 
 

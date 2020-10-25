@@ -46,7 +46,7 @@ class MyStatelessWidget extends StatelessWidget {
         textDirection: TextDirection.rtl,
         child: Scaffold(
 //            key: scaffoldKey,
-            drawer: buildDrawerLayout(context),
+            drawer: Drower(),
             appBar: PreferredSize(
               preferredSize: Size.fromHeight(50.0),
               child: Appbar(),

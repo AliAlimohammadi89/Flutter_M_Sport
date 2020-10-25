@@ -20,7 +20,27 @@ import 'Home.dart';
 //void main() => runApp(MyApp());
 
 /// This is the main application widget.
-class Exercise_list extends StatelessWidget {
+///
+///
+///
+class Exercise_list extends StatefulWidget {
+  @override
+//  _Exercise_listState createState() => _Exercise_listState();
+  State createState() {
+    return _Exercise_listState();
+  }
+}
+
+class _Exercise_listState extends State<Exercise_list> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+       home: MyStatelessWidget(),
+    );
+  }
+}
+
+class Exercise_list2 extends StatelessWidget {
   static const String _title = 'Flutter Code Sample';
 
   @override
@@ -44,7 +64,7 @@ class MyStatelessWidget extends StatelessWidget {
         textDirection: TextDirection.rtl,
         child: Scaffold(
 //            key: scaffoldKey,
-            drawer: buildDrawerLayout(context),
+            drawer: Drower(),
             appBar: PreferredSize(
               preferredSize: Size.fromHeight(50.0),
               child: Appbar(),

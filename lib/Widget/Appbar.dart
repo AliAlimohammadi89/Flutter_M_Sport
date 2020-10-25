@@ -21,7 +21,7 @@ class Appbar extends StatelessWidget {
       child: AppBar(
         backgroundColor: Color(0xffFD8D00),
         actions: <Widget>[
-          Image.asset('./img/Splash.png', width: 35)
+          Image.asset('./img/Splash2.jpeg', width: 35)
           //            IconButton(
           //              icon: const Icon(Icons.navigate_next),
           //              tooltip: 'Next page',

@@ -1,4 +1,3 @@
-
 /**
  * Author: Sudip Thapa
  * profile: https://github.com/sudeepthapa
@@ -7,74 +6,71 @@ import 'package:flutter/material.dart';
 import 'package:untitlednew2_6/Widget/Appbar.dart';
 import 'package:untitlednew2_6/Widget/Drawer.dart';
 
-class LoginSevenPage extends StatefulWidget {
+class Profile extends StatefulWidget {
   static final String path = "lib/src/pages/login/login7.dart";
+
   @override
-  _LoginSevenPageState createState() => _LoginSevenPageState();
+  _ProfileState createState() => _ProfileState();
 }
 
-class _LoginSevenPageState extends State<LoginSevenPage> {
+class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
-
-    return Scaffold(
-
-       drawer: buildDrawerLayout(context),
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(50.0),
-        child: Appbar(),
-      ),
-
-
-      backgroundColor: Colors.white,
-      body: ListView(
-        children: <Widget>[
-          Stack(
-            textDirection: TextDirection.rtl,
+    return new Directionality(
+        textDirection: TextDirection.rtl,
+        child: Scaffold(
+          drawer: Drower(),
+          appBar: PreferredSize(
+            preferredSize: Size.fromHeight(50.0),
+            child: Appbar(),
+          ),
+          backgroundColor: Colors.white,
+          body: ListView(
             children: <Widget>[
-              ClipPath(
-                clipper: WaveClipper2(),
-                child: Container(
-                  child: Column(),
-                  width: double.infinity,
-                  height: 300,
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(
+              Stack(
+                 children: <Widget>[
+                  ClipPath(
+                    clipper: WaveClipper2(),
+                    child: Container(
+                      child: Column(),
+                      width: double.infinity,
+                      height: 200,
+                      decoration: BoxDecoration(gradient: LinearGradient(
 //                          colors: [Color(0x22ff3a5a), Color(0x22fe494d)])),
-                    colors: [Color(0x44ff3a5a), Color(0x44fe494d)])),
+                          colors: [Color(0x44ff3a5a), Color(0x44fe494d)])),
 
 //                    colors: [Color(0xFF9Dd95F), Color(0x22fe494d)])),
-                ),
-              ),
-              ClipPath(
-                clipper: WaveClipper3(),
-                child: Container(
-                  child: Column(),
-                  width: double.infinity,
-                  height: 300,
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                          colors: [Color(0xFF00FFF6), Color(0x44fe494d)])),
-                ),
-              ),
-              ClipPath(
-                clipper: WaveClipper1(),
-                child: Container(
-                  child: Column(
-                    children: <Widget>[
-                      SizedBox(
-                        height: 40,
-                      ),
+                    ),
+                  ),
+                  ClipPath(
+                    clipper: WaveClipper3(),
+                    child: Container(
+                      child: Column(),
+                      width: double.infinity,
+                      height: 200,
+                      decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                              colors: [Color(0xFF00FFF6), Color(0x44fe494d)])),
+                    ),
+                  ),
+                  ClipPath(
+                    clipper: WaveClipper1(),
+                    child: Container(
+                      child: Column(
+                        children: <Widget>[
+                          SizedBox(
+                            height: 15,
+                          ),
 //                      Icon(
 //                        Icons.fastfood,
 //                        color: Colors.white,
 //                        size: 60,
 //                      ),
-                      new Image.asset('./img/Splash2.jpeg', width: 150),
+                          new Image.asset('./img/Splash2.jpeg', width: 100),
 
-                      SizedBox(
-                        height: 20,
-                      ),
+                          SizedBox(
+                            height: 20,
+                          ),
 //                      Text(
 //                        "Taste Me",
 //                        style: TextStyle(
@@ -82,113 +78,157 @@ class _LoginSevenPageState extends State<LoginSevenPage> {
 //                            fontWeight: FontWeight.w700,
 //                            fontSize: 30),
 //                      ),
-                    ],
+                        ],
+                      ),
+                      width: double.infinity,
+                      height: 200,
+                      decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                              colors: [Color(0xffFD8D00), Color(0xFFFD6000)])),
+                    ),
                   ),
-                  width: double.infinity,
-                  height: 300,
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                          colors: [Color(0xffFD8D00), Color(0xFFFD6000)])),
-                ),
+                ],
               ),
+
+              SizedBox(
+                height: 20,
+              ),
+
+              Column(
+                   children: <Widget>[
+                    new ListTile(
+                      leading: Image.asset('img/height.PNG', width: 40, height: 40),
+                      subtitle: Text('قد'),
+                      title: new TextFormField(
+                        style: TextStyle(fontFamily: 'Vazirnu'),
+
+                        keyboardType: TextInputType.number,
+
+                        initialValue: '187',
+//                    controller: TextEditingController(),
+                        decoration: new InputDecoration(
+//                    counterText: 'ddd',
+                          hintText: "قد",
+                          suffixText: 'سانتی متر',
+                        ),
+                      ),
+                    ),
+                    new ListTile(
+                      leading: Image.asset('img/weight.PNG', width: 40, height: 40),
+                      subtitle: Text('وزن'),
+                      title: new TextFormField(
+                        keyboardType: TextInputType.number,
+                        style: TextStyle(fontFamily: 'Vazirnu'),
+
+                        initialValue: '82',
+//                    controller: TextEditingController(),
+                        decoration: new InputDecoration(
+                          hintText: "قد",
+                          suffixText: 'کیلو گرم',
+                        ),
+                      ),
+                    ),
+                    new ListTile(
+                      leading: const Icon(
+                        Icons.email,
+                        size: 40,
+                        color: Colors.black,
+                      ),
+                      subtitle: Text('ایمیل'),
+
+                      title: new TextFormField(
+                        initialValue: 'Test@gmail.com',
+                        decoration: new InputDecoration(
+                          hintText: "ایمیل",
+                        ),
+                      ),
+                    ),
+
+                    new ListTile(
+                      leading: const Icon(
+                        Icons.person,
+                        size: 40,
+                        color: Colors.black,
+                      ),
+                      subtitle: const Text('نام و نام خانوادگی'),
+                      title: const Text(
+                        'علی علی محمدی',
+                        style: (TextStyle(color: Colors.black)),
+                      ),
+                    ),
+                    new ListTile(
+                      leading: const Icon(
+                        Icons.phone_iphone,
+                        size: 40,
+                        color: Colors.black,
+                      ),
+                      subtitle: const Text('شماره همراه'),
+                      title: const Text(
+                        '09383650130',
+                        style: (TextStyle(color: Colors.black,fontFamily: 'Vazirnu')),
+                      ),
+                    ),
+                    new ListTile(
+                      leading: const Icon(
+                        Icons.credit_card_rounded,
+                        size: 40,
+                        color: Colors.black,
+                      ),
+                      subtitle: const Text('کد ملی'),
+                      title: const Text(
+                        '3040138258',
+                        style: (TextStyle(color: Colors.black,fontFamily: 'Vazirnu')),
+                      ),
+                    ),
+                    new ListTile(
+                      leading: const Icon(
+                        Icons.card_membership_rounded,
+                        size: 40,
+                        color: Colors.black,
+                      ),
+                      subtitle: const Text('شماره پرسنلی'),
+                      title: const Text(
+                        '47274',
+                        style: (TextStyle(color: Colors.black,fontFamily: 'Vazirnu')),
+                      ),
+                    ),
+                    new ListTile(
+                      leading: const Icon(
+                        Icons.location_history_rounded,
+                        size: 40,
+                        color: Colors.black,
+                      ),
+                      subtitle: const Text('آدرس'),
+                      title: const Text(
+                        'کرمان - رفسنجان - بلوار امام رضا - کوچه 13',
+                        style:
+                        TextStyle(fontFamily: 'Vazirnu', color: Colors.black),
+                      ),
+                    ),
+
+                    new ListTile(
+                      leading: const Icon(
+                        Icons.today,
+                        size: 40,
+                        color: Colors.black,
+                      ),
+                      subtitle: const Text('تاریخ تولد'),
+                      title: const Text(
+                        '1370/1/24',
+                        style:
+                        TextStyle(fontFamily: 'Vazirnu', color: Colors.black),
+                      ),
+                    ),
+
+                  ],
+                ),
+
             ],
           ),
-          SizedBox(
-            height: 1,
-          ),
-//          Padding(
-//            padding: EdgeInsets.symmetric(horizontal: 32),
-//            child: Material(
-//              elevation: 2.0,
-//              borderRadius: BorderRadius.all(Radius.circular(30)),
-//              child: TextField(
-//                onChanged: (String value){},
-//                cursorColor: Colors.deepOrange,
-//                decoration: InputDecoration(
-//                    hintText: "",
-//                    prefixIcon: Material(
-//                      elevation: 0,
-//                      borderRadius: BorderRadius.all(Radius.circular(30)),
-//                      child: Icon(
-//                        Icons.email,
-//                        color: Colors.red,
-//                      ),
-//                    ),
-//                    border: InputBorder.none,
-//                    contentPadding:
-//                    EdgeInsets.symmetric(horizontal: 25, vertical: 13)),
-//              ),
-//            ),
-//          ),
-          SizedBox(
-            height: 20,
-          ),
-//          Padding(
-//
-//            padding: EdgeInsets.symmetric(horizontal: 32),
-//            child: Material(
-//
-//              elevation: 2.0,
-//              borderRadius: BorderRadius.all(Radius.circular(30)),
-//              child: TextField(
-//
-//                onChanged: (String value){},
-//                cursorColor: Colors.deepOrange,
-//                decoration: InputDecoration(
-//                    hintText: "Password",
-//                    prefixIcon: Material(
-//                      elevation: 0,
-//                      borderRadius: BorderRadius.all(Radius.circular(30)),
-//                      child: Icon(
-//                        Icons.lock,
-//                        color: Colors.red,
-//                      ),
-//                    ),
-//                    border: InputBorder.none,
-//                    contentPadding:
-//                    EdgeInsets.symmetric(horizontal: 25, vertical: 13)),
-//              ),
-//            ),
-//          ),
-//          SizedBox(
-//            height: 25,
-//          ),
-//          Padding(
-//              padding: EdgeInsets.symmetric(horizontal: 32),
-//              child: Container(
-//                decoration: BoxDecoration(
-//                    borderRadius: BorderRadius.all(Radius.circular(100)),
-//                    color: Color(0xffff3a5a)),
-//                child: FlatButton(
-//                  child: Text(
-//                    "Login",
-//                    style: TextStyle(
-//                        color: Colors.white,
-//                        fontWeight: FontWeight.w700,
-//                        fontSize: 18),
-//                  ),
-//                  onPressed: () {},
-//                ),
-//              )),
-//          SizedBox(height: 20,),
-//          Center(
-//            child: Text("FORGOT PASSWORD ?", style: TextStyle(color:Colors.red,fontSize: 12 ,fontWeight: FontWeight.w700),),
-//          ),
-//          SizedBox(height: 40,),
-//          Row(
-//            mainAxisAlignment: MainAxisAlignment.center,
-//            children: <Widget>[
-//              Text("Don't have an Account ? ", style: TextStyle(color:Colors.black,fontSize: 12 ,fontWeight: FontWeight.normal),),
-//              Text("Sign Up ", style: TextStyle(color:Colors.red, fontWeight: FontWeight.w500,fontSize: 12, decoration: TextDecoration.underline )),
-//
-//            ],
-//          )
-        ],
-      ),
+        )
     );
   }
 }
-
 class WaveClipper1 extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {

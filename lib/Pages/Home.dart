@@ -20,32 +20,31 @@ import 'Food_list.dart';
 //void main() => runApp(MyApp());
 
 /// This is the main application widget.
-class Home extends StatelessWidget {
-  static const String _title = 'Flutter Code Sample';
-
-  @override
-  Widget build(BuildContext context) {
-//    print('home');
-    return Home_des();
-  }
-}
 
 //final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-final SnackBar snackBar = const SnackBar(content: Text('Showing Snackbar'));
+//final SnackBar snackBar = const SnackBar(content: Text('Showing Snackbar'));
 
 /// This is the stateless widget that the main application instantiates.
-class Home_des extends StatelessWidget {
-  Home_des({Key key}) : super(key: key);
 
+class Home2 extends StatefulWidget {
+  @override
+  _Home2State createState() => _Home2State();
+}
+
+class _Home2State extends State<Home2> {
   @override
   Widget build(BuildContext context) {
+    final _scaffoldKey = GlobalKey<ScaffoldState>();
+
     return new Directionality(
         textDirection: TextDirection.rtl,
         child: Scaffold(
+            key: _scaffoldKey,
+
 //            key: scaffoldKey,
 //            drawer: Home_Drower(),
 //            drawer: buildDrawerLayout( context),
-            drawer: buildDrawerLayout(context),
+            drawer: Drower(),
             appBar: PreferredSize(
               preferredSize: Size.fromHeight(50.0),
               child: Appbar(),
@@ -98,6 +97,82 @@ class Home_des extends StatelessWidget {
   }
 }
 
+
+class Home extends StatelessWidget {
+  Home({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final _scaffoldKey = GlobalKey<ScaffoldState>();
+
+    return new Directionality(
+        textDirection: TextDirection.rtl,
+        child: Scaffold(
+            key: _scaffoldKey,
+
+//            key: scaffoldKey,
+//            drawer: Home_Drower(),
+//            drawer: buildDrawerLayout( context),
+            drawer: Drower(),
+            appBar: PreferredSize(
+              preferredSize: Size.fromHeight(50.0),
+              child: Appbar(),
+            ),
+            body: new ListView(
+              padding: EdgeInsets.only(
+                top: 30,
+              ),
+              children: <Widget>[
+//                SizedBox(height: 28),
+                H_W(),
+                SizedBox(height: 27),
+                BMI(),
+                SizedBox(height: 18),
+                Center(
+                  child: Stack(
+                    children: <Widget>[
+                      // Max Size
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Image.asset(
+                            './img/home_center.png',
+                            fit: BoxFit.cover,
+                            width: 100,
+                            alignment: Alignment.centerLeft,
+                          ),
+                        ],
+                      ),
+
+                      BBMM(),
+                    ],
+                  ),
+                ),
+                Container(
+                  height: 2.0,
+                  margin: const EdgeInsets.only(
+                      top: 20.0, left: 85.0, right: 85.0, bottom: 10),
+                  color: Color(0xff707070),
+                ),
+//                Process(),
+                SizedBox(
+                  height: 10,
+                ),
+                F_E()
+              ],
+            )));
+  }
+}
+class test extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    throw UnimplementedError();
+  }
+
+}
 class Program_BF extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -567,9 +642,9 @@ class Process extends StatelessWidget {
 }
 
 class BBMM_Creator extends StatelessWidget {
-  final name;
+  var name;
 
-  final value;
+  var value;
 
   double margin;
 
@@ -669,9 +744,9 @@ class BBMM_Creator extends StatelessWidget {
 }
 
 class BBMM_CreatorL extends StatelessWidget {
-  final name;
+  var name;
 
-  final value;
+  var value;
 
   double margin;
 

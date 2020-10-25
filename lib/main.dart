@@ -13,7 +13,7 @@ import 'Pages/Exercise_program.dart';
 import 'Pages/Splash.dart' as Splash;
  //import 'Db/DBTEST.dart';
 
-void main() => runApp(MyApp());
+void main() async => runApp(MyApp());
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
     return new MaterialApp(
       debugShowMaterialGrid:false ,
 //      debugShowCheckedModeBanner: false,
-      debugShowCheckedModeBanner: false,
+
 //      showSemanticsDebugger: false,
 
       title: 'WhatsApp',
@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
 //          accentColor:  new Color(0xff25d366)
       ),
       routes: {
-        "/Home" : (context) => new Directionality(textDirection: TextDirection.rtl, child: new Home()),
+        "/Home" : (context) => new Directionality(textDirection: TextDirection.rtl, child: new Home2()),
         "/Login" : (context) => new Directionality(textDirection: TextDirection.rtl, child: new Login()),
         '/splash': (context) => new Splash.SplashScreen(),
 //      '/Home': (context) => new Home(),
@@ -52,7 +52,9 @@ class MyApp extends StatelessWidget {
         '/Food_program': (context) => new Food_program(),
       },
           initialRoute: '/splash',
-     );
+      debugShowCheckedModeBanner: false,
+
+    );
   }
 }
 
